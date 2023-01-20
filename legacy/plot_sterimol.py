@@ -1,7 +1,5 @@
 import ast
 
-cmd.run('/home/attiliocn/opt/pymol/bin/cgo_arrow.py')
-
 def plot_sterimol(origin, sterimol_coordinates):
     cmd.delete('*_vector')
 
