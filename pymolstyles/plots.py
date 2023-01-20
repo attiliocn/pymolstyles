@@ -1,3 +1,6 @@
+from pymol import cmd
+from ..external.cgo_arrow import *
+
 import ast
 
 def plot_vdw(arg1):
@@ -9,8 +12,7 @@ def plot_vdw(arg1):
     cmd.hide("lines", arg1+"_vdw")
     cmd.hide("sticks", arg1+"_vdw")
     cmd.set("sphere_transparency", 0.5, arg1+"_vdw")
-cmd.extend("add_vdw", add_vdw)
-
+cmd.extend("plot_vdw", plot_vdw)
 
 def plot_cube(isovalue=0.004):
     '''
@@ -43,7 +45,7 @@ def plot_nci(arg1, isovalue=0.3):
     cmd.set("surface_color", "ramp", "grad")
     cmd.set('transparency', 0, 'grad')
     cmd.set('two_sided_lighting',value=1)
-cmd.extend( "nci", nci )
+cmd.extend( "plot_nci", plot_nci)
 
 def plot_elpot(arg1, isovalue=0.04, scale=0.5):
     densf = arg1+"_dens"
@@ -54,7 +56,7 @@ def plot_elpot(arg1, isovalue=0.04, scale=0.5):
     cmd.set("surface_color", "ramp", "dens")
     cmd.set('transparency', 0.50, 'dens')
     cmd.set('two_sided_lighting',value=1)
-cmd.extend( "elpot", elpot)
+cmd.extend("plot_elpot", plot_elpot)
 
 def plot_sterimol(origin, sterimol_coordinates):
     cmd.delete('*_vector')
@@ -75,8 +77,7 @@ def plot_sterimol(origin, sterimol_coordinates):
     cmd.delete('L')
     cmd.delete('B1')
     cmd.delete('B5')
-   
-cmd.extend('sterimol', plot_sterimol)
+cmd.extend('plot_sterimol', plot_sterimol)
 
 
 def plot_buried_volume(bv_name, color='lightblue', radius=3.5):
@@ -89,4 +90,4 @@ def plot_buried_volume(bv_name, color='lightblue', radius=3.5):
     cmd.show('spheres', bv_name)
     cmd.set('sphere_transparency', 0.5, bv_name, )
     cmd.color(color, bv_name)
-cmd.extend('buriedvolume', show_buried_volume)
+cmd.extend('plot_buried_volume', plot_buried_volume)

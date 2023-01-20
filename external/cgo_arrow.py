@@ -6,7 +6,7 @@ http://pymolwiki.org/index.php/cgo_arrow
 License: BSD-2-Clause
 '''
 
-from pymol import cmd, cgo, CmdException
+from pymol import cmd, cgo
 
 
 def cgo_arrow(atom1='pk1', atom2='pk2', radius=0.5, gap=0.0, hlength=-1, hradius=-1,
@@ -78,4 +78,4 @@ ARGUMENTS
 
     cmd.load_cgo(obj, name)
 
-cmd.extend('cgo_arrow', cgo_arrow)
+cmd.extend('cgo_arrow', cgo_arrow)

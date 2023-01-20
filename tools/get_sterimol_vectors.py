@@ -27,4 +27,4 @@ sterimol_vectors_rotation = sterimol_vectors_rotation + coordinates[args.atom1-1
 coordinates = coordinates.round(3)
 sterimol_vectors_rotation = sterimol_vectors_rotation.round(3)
 
-print(f"sterimol {list(coordinates[args.atom1-1])},[{list(sterimol_vectors_rotation[0])}, {list(sterimol_vectors_rotation[1])}, {list(sterimol_vectors_rotation[2])}]")
+print(f"plot_sterimol {list(coordinates[args.atom1-1])},[{list(sterimol_vectors_rotation[0])}, {list(sterimol_vectors_rotation[1])}, {list(sterimol_vectors_rotation[2])}]")
