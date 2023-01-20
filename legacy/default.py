@@ -224,17 +224,21 @@ cmd.extend("add_vdw", add_VDW)
 
 
 def plot_cube(isovalue=0.004):
+    '''
+    todo --> orbital cube must be imported first, then the strucrue (bug)
+    '''
     cmd.set("internal_gui_width", 525)
     obj_list = cmd.get_names('objects')
+    print(obj_list)
     isovalue = float(isovalue)
     for cube in obj_list:
         orbitalName = 'orb-'+cube
         positiveOrbital = cube+'+'
         negativeOrbital = cube+'-'
         
-        cmd.isomesh(positiveOrbital,cube,isovalue*1)
+        cmd.isosurface(positiveOrbital,cube,isovalue*1)
         cmd.color("blue",positiveOrbital) 
-        cmd.isomesh(negativeOrbital,cube,isovalue*-1)
+        cmd.isosurface(negativeOrbital,cube,isovalue*-1)
         cmd.color("red",negativeOrbital)
 
         for orbital in (positiveOrbital,negativeOrbital):
@@ -331,7 +335,9 @@ def save_img(filename='default', ray_mode=1):
     canvas_width = screen_size[0]
     canvas_height = screen_size[1]
 
+    cmd.set("ray_trace_gain", 8) # Increase ray_trace_gain for improved look on the final image
     cmd.png(filename, canvas_width*3, canvas_height*3, dpi=300, ray=ray_mode)
+    cmd.set("ray_trace_gain", 0.12) # Reset ray_trace_gain back to default
 cmd.extend("expimg", save_img)
 
 
