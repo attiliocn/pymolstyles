@@ -1,13 +1,8 @@
-# BallnStick creates a ball and stick representation of an object 
-# Add_VDW creates a copy of an object with full-sized, transparent spheres
-# Bondi VDW values added below to override default Pymol settings
-
 from pymol import cmd
 from pymol import util
-from pymol import stored
 import re
 
-#Color Maps
+# Color Maps
 viridis = [
     [0.992, 0.905, 0.145],
     [0.368, 0.788, 0.384],
@@ -147,7 +142,7 @@ cmd.set('label_color', 'yellow')
 cmd.set('label_outline_color', 'black')
 cmd.set('label_font_id', 7)
 cmd.set('label_size', 30)
-###################
+
 def default_env(arg1):
 	cmd.set("ambient", 0.4) #amount of ambient light
 	cmd.set("shininess", 25) #how much the object shines <the greater it becames opaque>
@@ -182,7 +177,7 @@ def ball_and_stick(arg1='all'):
     cmd.set("stick_h_scale",1.0, arg1) 
     cmd.set("sphere_scale",0.25, arg1)
     cmd.set("sphere_scale",0.25, 'elem H')
-cmd.extend("bns", ball_and_stick)
+cmd.extend("ball_and_stick", ball_and_stick)
 
 def houkmol(arg1='all'):
     ball_and_stick(arg1)
@@ -202,16 +197,16 @@ def houkmol(arg1='all'):
     cmd.set("shininess", 100)
     cmd.set("ambient", 0.6)
     
-cmd.extend("hmol", houkmol)
+cmd.extend("houkmol", houkmol)
 
 def quick_overlay(entry, color='blue'):
     cmd.color(color,entry)
     cmd.set('stick_transparency', 0.5, entry)
     cmd.set('sphere_transparency', 0.5, entry)
-cmd.extend('quickover', quick_overlay)
+cmd.extend('quick_overlay', quick_overlay)
 
 
-def add_VDW(arg1):
+def add_vdw(arg1):
     cmd.copy(arg1+"_vdw", arg1)
     cmd.set("sphere_scale",1.0, arg1+"_vdw and elem H")
     cmd.rebuild()
@@ -220,12 +215,12 @@ def add_VDW(arg1):
     cmd.hide("lines", arg1+"_vdw")
     cmd.hide("sticks", arg1+"_vdw")
     cmd.set("sphere_transparency", 0.5, arg1+"_vdw")
-cmd.extend("add_vdw", add_VDW)
+cmd.extend("add_vdw", add_vdw)
 
 
 def plot_cube(isovalue=0.004):
     '''
-    todo --> orbital cube must be imported first, then the strucrue (bug)
+    todo --> orbital cube must be imported first, then the structure (bug)
     '''
     cmd.set("internal_gui_width", 525)
     obj_list = cmd.get_names('objects')
@@ -262,7 +257,7 @@ def bond_between(element1, element2, cutoff=2.3):
             element1_id = bond[0][1]
             element2_id = bond[1][1]
             cmd.bond(f"id {element1_id} and {entry}", f"id {element2_id} and {entry}")
-cmd.extend("bondbetween", bond_between)            
+cmd.extend("bond_between", bond_between)            
 
 def nci(arg1, isovalue=0.3):
 	# nci.py, a tiny script to display plots from Nciplot in PyMOL
@@ -273,9 +268,9 @@ def nci(arg1, isovalue=0.3):
     cmd.set("surface_color", "ramp", "grad")
     cmd.set('transparency', 0, 'grad')
     cmd.set('two_sided_lighting',value=1)
-cmd.extend( "nci", nci );
+cmd.extend( "nci", nci )
 
-def electrostatic_potential_surface(arg1, isovalue=0.04, scale=0.5):
+def elpot(arg1, isovalue=0.04, scale=0.5):
     densf = arg1+"_dens"
     gradf = arg1+"_esp"
     min_surface, max_surface = [abs(float(scale))*-1, abs(float(scale))]
@@ -284,7 +279,7 @@ def electrostatic_potential_surface(arg1, isovalue=0.04, scale=0.5):
     cmd.set("surface_color", "ramp", "dens")
     cmd.set('transparency', 0.50, 'dens')
     cmd.set('two_sided_lighting',value=1)
-cmd.extend( "elpot", electrostatic_potential_surface );
+cmd.extend( "elpot", elpot)
 
 def group_visible(groupname='test', include_measurements=False):
     visible_entries = cmd.get_object_list(selection='visible')
@@ -298,20 +293,20 @@ def group_visible(groupname='test', include_measurements=False):
                 cmd.set_name(item, dist_obj_newname)
                 visible_entries.append(dist_obj_newname)
     cmd.group(groupname, ' '.join(visible_entries))
-cmd.extend("group_visible", group_visible);
+cmd.extend("group_visible", group_visible)
 
-def show_buried_volume(entry_name, sphere_radius=3.5):
+def bv(entry_name, sphere_radius=3.5):
     cmd.set_name(entry_name, "bv_atoms")
     cmd.copy(entry_name, "bv_atoms")
     cmd.alter("sele", f"vdw={sphere_radius}")
     cmd.set("sphere_scale", 1, "sele")
     cmd.set("sphere_transparency", 0.50, "sele")
-cmd.extend("bv", show_buried_volume);
+cmd.extend("bv", bv)
 
 def print_stuff():
     visible_entries = cmd.get_names(type='all', enabled_only=1)
     print(visible_entries)
-cmd.extend("pstuff", print_stuff);
+cmd.extend("pstuff", print_stuff)
 
 def align_visible(reference_entry_id=0):
     visible_entries = cmd.get_object_list(selection='visible')
@@ -319,7 +314,7 @@ def align_visible(reference_entry_id=0):
     mobile_entries = [i for i in visible_entries if i != reference_entry]
     for entry in mobile_entries:
         cmd.align(entry, reference_entry, cycles=200)
-cmd.extend("align_visible", align_visible);
+cmd.extend("align_visible", align_visible)
 
 def save_img(filename='default', ray_mode=1):
     '''
