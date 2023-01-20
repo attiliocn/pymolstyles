@@ -1,5 +1,5 @@
 from pymol import cmd
-from environment import default_environment, default_atoms_preset
+from pymolstyles.environment import default_environment, default_atoms_preset
 
 # GLOBAL SETTINGS
 
