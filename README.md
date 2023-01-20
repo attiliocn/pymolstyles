@@ -1,2 +1,2 @@
-!['ALT'](img/pymolstyles.png)
+!['pymolstyles logo'](./docs/img/pymolstyles.png)
 
