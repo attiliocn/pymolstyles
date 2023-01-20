@@ -1,7 +1,7 @@
 # Configure the default workspace
 from .pymolstyles.workspace import *
 
-# Load default styles
+# Load styles
 from .pymolstyles.styles import *
 
 # Load default atoms settings
