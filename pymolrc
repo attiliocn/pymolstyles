@@ -1,3 +1,0 @@
-run legacy/default.py
-run legacy/plot_sterimol.py
-run legacy/buried_volume.py
