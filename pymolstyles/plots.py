@@ -1,5 +1,5 @@
 from pymol import cmd
-from external.cgo_arrow import *
+from pymolstyles.external.cgo_arrow import *
 
 import ast
 
