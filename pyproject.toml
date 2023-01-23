@@ -7,7 +7,7 @@ license = "GNU GENERAL PUBLIC LICENSE V3"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9.0"
 
 [tool.poetry.group.dev.dependencies]
 pyqt5 = "^5.15.7"
