@@ -8,10 +8,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9.0"
-morfeus-ml = {version = "^0.7.2", optional = true}
 
 [tool.poetry.group.dev.dependencies]
 pyqt5 = "^5.15.7"
+
+[tool.poetry.group.addons.dependencies]
+morfeus-ml = {version = "^0.7.2", optional = true}
 
 [build-system]
 requires = ["poetry-core"]

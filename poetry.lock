@@ -4,7 +4,7 @@
 name = "fire"
 version = "0.5.0"
 description = "A library for automatically generating command line interfaces."
-category = "main"
+category = "dev"
 optional = true
 python-versions = "*"
 files = [
@@ -19,7 +19,7 @@ termcolor = "*"
 name = "morfeus-ml"
 version = "0.7.2"
 description = "A Python package for calculating molecular features"
-category = "main"
+category = "dev"
 optional = true
 python-versions = ">=3.8"
 files = [
@@ -36,7 +36,7 @@ scipy = "*"
 name = "numpy"
 version = "1.24.1"
 description = "Fundamental package for array computing in Python"
-category = "main"
+category = "dev"
 optional = true
 python-versions = ">=3.8"
 files = [
@@ -138,7 +138,7 @@ files = [
 name = "scipy"
 version = "1.9.3"
 description = "Fundamental algorithms for scientific computing in Python"
-category = "main"
+category = "dev"
 optional = true
 python-versions = ">=3.8"
 files = [
@@ -177,7 +177,7 @@ test = ["asv", "gmpy2", "mpmath", "pytest", "pytest-cov", "pytest-xdist", "sciki
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-category = "main"
+category = "dev"
 optional = true
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 files = [
@@ -189,7 +189,7 @@ files = [
 name = "termcolor"
 version = "2.2.0"
 description = "ANSI color formatting for output in terminal"
-category = "main"
+category = "dev"
 optional = true
 python-versions = ">=3.7"
 files = [
@@ -203,4 +203,4 @@ tests = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9.0"
-content-hash = "606be72858920729fa87bfcf53e36fcd7956512962110110485bc57a7e68cc1c"
+content-hash = "07f5c0250dfb39a7634b1a90fd5ff5beffe409a3fd300b47be1dffc0bd33b782"
