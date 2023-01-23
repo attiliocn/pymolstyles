@@ -4,8 +4,8 @@
 name = "fire"
 version = "0.5.0"
 description = "A library for automatically generating command line interfaces."
-category = "dev"
-optional = true
+category = "main"
+optional = false
 python-versions = "*"
 files = [
     {file = "fire-0.5.0.tar.gz", hash = "sha256:a6b0d49e98c8963910021f92bba66f65ab440da2982b78eb1bbf95a0a34aacc6"},
@@ -19,8 +19,8 @@ termcolor = "*"
 name = "morfeus-ml"
 version = "0.7.2"
 description = "A Python package for calculating molecular features"
-category = "dev"
-optional = true
+category = "main"
+optional = false
 python-versions = ">=3.8"
 files = [
     {file = "morfeus-ml-0.7.2.tar.gz", hash = "sha256:8b3a1029ac94fb22e982df45a6d41cd253a89fffadea2fd93d6ceea37e14e49d"},
@@ -36,8 +36,8 @@ scipy = "*"
 name = "numpy"
 version = "1.24.1"
 description = "Fundamental package for array computing in Python"
-category = "dev"
-optional = true
+category = "main"
+optional = false
 python-versions = ">=3.8"
 files = [
     {file = "numpy-1.24.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:179a7ef0889ab769cc03573b6217f54c8bd8e16cef80aad369e1e8185f994cd7"},
@@ -138,8 +138,8 @@ files = [
 name = "scipy"
 version = "1.9.3"
 description = "Fundamental algorithms for scientific computing in Python"
-category = "dev"
-optional = true
+category = "main"
+optional = false
 python-versions = ">=3.8"
 files = [
     {file = "scipy-1.9.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:1884b66a54887e21addf9c16fb588720a8309a57b2e258ae1c7986d4444d3bc0"},
@@ -177,8 +177,8 @@ test = ["asv", "gmpy2", "mpmath", "pytest", "pytest-cov", "pytest-xdist", "sciki
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-category = "dev"
-optional = true
+category = "main"
+optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 files = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
@@ -189,8 +189,8 @@ files = [
 name = "termcolor"
 version = "2.2.0"
 description = "ANSI color formatting for output in terminal"
-category = "dev"
-optional = true
+category = "main"
+optional = false
 python-versions = ">=3.7"
 files = [
     {file = "termcolor-2.2.0-py3-none-any.whl", hash = "sha256:91ddd848e7251200eac969846cbae2dacd7d71c2871e92733289e7e3666f48e7"},
@@ -203,4 +203,4 @@ tests = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9.0"
-content-hash = "07f5c0250dfb39a7634b1a90fd5ff5beffe409a3fd300b47be1dffc0bd33b782"
+content-hash = "14f7eea68a1b2e8316adbe7b851fbd5acdd47ed199e8f1d898e7d621b77e6909"
