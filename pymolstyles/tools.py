@@ -57,11 +57,10 @@ def align_visible(reference_entry_id=0):
     mobile_entries = [i for i in visible_entries if i != reference_entry]
     for entry in mobile_entries:
         cmd.align(entry, reference_entry, cycles=200)
-cmd.extend("bond_between",bond_between)
+cmd.extend("align_visible",align_visible)
 
 def quick_overlay(entry, color='blue'):
     cmd.color(color,entry)
     cmd.set('stick_transparency', 0.5, entry)
     cmd.set('sphere_transparency', 0.5, entry)
-cmd.extend('quick_overlay', quick_overlay)
-cmd.extend("bond_between",bond_between)
+cmd.extend("quick_overlay",quick_overlay)
