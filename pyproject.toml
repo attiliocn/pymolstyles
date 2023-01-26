@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pymolstyles"
-version = "1.0.0"
+version = "1.0.1"
 description = "Scripts for small molecule visualization using PyMOL"
 authors = ["Attilio Chiavegatti <attiliochiavegatti@gmail.com>"]
 license = "GNU GENERAL PUBLIC LICENSE V3"
