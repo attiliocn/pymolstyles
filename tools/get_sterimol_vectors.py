@@ -15,6 +15,13 @@ elements, coordinates = morfeus.read_xyz(args.file)
 sterimol = morfeus.Sterimol(elements, coordinates, args.atom1, args.atom2)
 rotation_matrix = sterimol._rotation_matrix
 
+print()
+print(f'Sterimol results for {args.file}')
+print("{:<20}{:<20.5}".format("L (uncorrected)", sterimol.L_value_uncorrected))
+print("{:<20}{:<20.5}".format("B1", sterimol.B_1_value))
+print("{:<20}{:<20.5}".format("B5", sterimol.B_5_value))
+print()
+
 sterimol_vectors = np.zeros(9).reshape(3,3)
 sterimol_vectors[0] = sterimol.L
 sterimol_vectors[1] = sterimol.B_1
@@ -24,7 +31,10 @@ coordinates_rotation = (rotation_matrix @ coordinates.T).T
 sterimol_vectors_rotation = (rotation_matrix.T @ sterimol_vectors.T).T
 sterimol_vectors_rotation = sterimol_vectors_rotation + coordinates[args.atom1-1]
 
-coordinates = coordinates.round(3)
-sterimol_vectors_rotation = sterimol_vectors_rotation.round(3)
+coordinates = coordinates.round(2)
+sterimol_vectors_rotation = sterimol_vectors_rotation.round(2)
 
+print("Use the command below in PyMOL to plot the sterimol vectors")
+print("----")
 print(f"plot_sterimol {list(coordinates[args.atom1-1])},[{list(sterimol_vectors_rotation[0])}, {list(sterimol_vectors_rotation[1])}, {list(sterimol_vectors_rotation[2])}]")
+print("----")
