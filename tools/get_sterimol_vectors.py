@@ -31,10 +31,13 @@ coordinates_rotation = (rotation_matrix @ coordinates.T).T
 sterimol_vectors_rotation = (rotation_matrix.T @ sterimol_vectors.T).T
 sterimol_vectors_rotation = sterimol_vectors_rotation + coordinates[args.atom1-1]
 
+args.atom2 = np.array(args.atom2)
+atom2_center = (np.sum(coordinates[args.atom2-1], axis=0)/(len(args.atom2))).round(2)
+
 coordinates = coordinates.round(2)
 sterimol_vectors_rotation = sterimol_vectors_rotation.round(2)
 
 print("Use the command below in PyMOL to plot the sterimol vectors")
 print("----")
-print(f"plot_sterimol {list(coordinates[args.atom1-1])},[{list(sterimol_vectors_rotation[0])}, {list(sterimol_vectors_rotation[1])}, {list(sterimol_vectors_rotation[2])}]")
+print(f"plot_sterimol [{list(coordinates[args.atom1-1])}, {list(atom2_center)}], [{list(sterimol_vectors_rotation[0])}, {list(sterimol_vectors_rotation[1])}, {list(sterimol_vectors_rotation[2])}]")
 print("----")
