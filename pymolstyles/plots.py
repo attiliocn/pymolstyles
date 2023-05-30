@@ -58,22 +58,26 @@ def plot_elpot(arg1, isovalue=0.04, scale=0.5):
     cmd.set('two_sided_lighting',value=1)
 cmd.extend("plot_elpot", plot_elpot)
 
-def plot_sterimol(origin, sterimol_coordinates):
+def plot_sterimol(atoms_coordinates, sterimol_coordinates):
     cmd.delete('*_vector')
 
-    origin = ast.literal_eval(origin)
+    print(atoms_coordinates)
+
+    atoms_coordinates = ast.literal_eval(atoms_coordinates)
     sterimol_coordinates = ast.literal_eval(sterimol_coordinates)
 
-    cmd.pseudoatom('c', pos=origin, elem='Cs')
+    cmd.pseudoatom('a1', pos=atoms_coordinates[0], elem='Cs')
+    cmd.pseudoatom('a2', pos=atoms_coordinates[1], elem='Cs')
     cmd.pseudoatom('L', pos=sterimol_coordinates[0], elem='Cs')
     cmd.pseudoatom('B1', pos=sterimol_coordinates[1], elem='Cs')
     cmd.pseudoatom('B5', pos=sterimol_coordinates[2], elem='Cs')
 
-    cgo_arrow('/c','/L', 0.1, color='red', name='L_vector')
-    cgo_arrow('/c','/B1', 0.1, color='green', name='B1_vector')
-    cgo_arrow('/c','/B5', 0.1, color='blue', name='B5_vector')
+    cgo_arrow('/a1','/L', 0.1, color='red', name='L_vector')
+    cgo_arrow('/a2','/B1', 0.1, color='green', name='B1_vector')
+    cgo_arrow('/a2','/B5', 0.1, color='blue', name='B5_vector')
 
-    cmd.delete('c')
+    cmd.delete('a1')
+    cmd.delete('a2')
     cmd.delete('L')
     cmd.delete('B1')
     cmd.delete('B5')
