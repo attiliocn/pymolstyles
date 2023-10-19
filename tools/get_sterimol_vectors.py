@@ -8,6 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('file')
 parser.add_argument('atom1', type=int)
 parser.add_argument('atom2', type=int, nargs='+')
+parser.add_argument('--exclude', type=int, nargs='+', default=None)
 args = parser.parse_args()
 
 
@@ -21,7 +22,7 @@ def get_angle(v1, v2):
 
 elements, coordinates = morfeus.read_xyz(args.file)
 
-sterimol = morfeus.Sterimol(elements, coordinates, args.atom1, args.atom2)
+sterimol = morfeus.Sterimol(elements, coordinates, args.atom1, args.atom2, excluded_atoms=args.exclude)
 rotation_matrix = sterimol._rotation_matrix
 
 print()
