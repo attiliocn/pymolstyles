@@ -9,8 +9,12 @@ parser.add_argument('file')
 parser.add_argument('atom1', type=int)
 parser.add_argument('atom2', type=int, nargs='+')
 parser.add_argument('--exclude', type=int, nargs='+', default=None)
+parser.add_argument('--bury', action='store_true')
+parser.add_argument('--bury-radius', type=float, default=5.5)
+parser.add_argument('--bury-method', type=str, default='delete')
+parser.add_argument('--bury-scale', type=float, default=.5)
+parser.add_argument('--bury-density', type=float, default=.01)
 args = parser.parse_args()
-
 
 def get_angle(v1, v2):
     inner = np.inner(v1, v2)
@@ -23,6 +27,15 @@ def get_angle(v1, v2):
 elements, coordinates = morfeus.read_xyz(args.file)
 
 sterimol = morfeus.Sterimol(elements, coordinates, args.atom1, args.atom2, excluded_atoms=args.exclude)
+
+if args.bury:
+    sterimol.bury(
+        sphere_radius=args.bury_radius, 
+        method=args.bury_method, 
+        radii_scale=args.bury_scale, 
+        density=args.bury_density
+    )
+
 rotation_matrix = sterimol._rotation_matrix
 
 print()
