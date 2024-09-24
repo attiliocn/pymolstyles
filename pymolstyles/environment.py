@@ -1,9 +1,9 @@
 from pymol import util,cmd
 
 def default_environment(arg1):
-	cmd.set("ambient", 0.4) #amount of ambient light
-	cmd.set("shininess", 25) #how much the object shines <the greater it becames opaque>
-	cmd.set("reflect", 0.05) #amount of light reflection
+	cmd.set("ambient", 0.4) # amount of ambient light
+	cmd.set("shininess", 25) # how much the object shines <the greater it becames opaque>
+	cmd.set("reflect", 0.05) # amount of light reflection
 	cmd.set("orthoscopic", 0)
 	cmd.set("transparency", 0.5)
 	cmd.set("antialias", 3)
