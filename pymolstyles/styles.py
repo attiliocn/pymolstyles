@@ -49,3 +49,7 @@ def fatball(arg1='all'):
     cmd.set("sphere_scale",0.25, arg1)
     cmd.set("sphere_scale",0.25, 'elem H')
 cmd.extend("fatball", fatball)
+
+def flat(arg1='all'):
+    ball_stick_preset(arg1)
+    default_environment(arg1)
