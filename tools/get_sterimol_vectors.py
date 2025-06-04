@@ -69,5 +69,5 @@ sterimol_vectors_rotation = sterimol_vectors_rotation.round(2)
 
 print("Use the command below in PyMOL to plot the sterimol vectors")
 print("----")
-print(f"plot_sterimol [{list(coordinates[args.atom1-1])}, {list(atom2_center)}], [{list(sterimol_vectors_rotation[0])}, {list(sterimol_vectors_rotation[1])}, {list(sterimol_vectors_rotation[2])}]")
+print(f"plot_sterimol [{coordinates[args.atom1-1].tolist()}, {atom2_center.tolist()}], [{sterimol_vectors_rotation[0].tolist()}, {sterimol_vectors_rotation[1].tolist()}, {sterimol_vectors_rotation[2].tolist()}]")
 print("----")
