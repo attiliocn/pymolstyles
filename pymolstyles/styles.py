@@ -1,5 +1,6 @@
 from pymol import cmd
 from pymolstyles.environment import default_environment, default_atoms_preset
+from pymolstyles.tools import get_visible_entries
 
 # GLOBAL SETTINGS
 
@@ -23,23 +24,24 @@ def ball_stick_preset(arg1):
     cmd.hide("lines", arg1)
     cmd.hide("labels")
 
-def houkmol(arg1='all'):
-    ball_stick_preset(arg1)
-    default_environment(arg1)
-    
-    cmd.color("gray70", f"elem C and {arg1}")
-    cmd.color("red", f"elem O and {arg1}")
-    cmd.color("tv_blue", f"elem N and {arg1}")
-    
-    cmd.set("stick_color",'black', arg1)
-    cmd.set("stick_radius",0.1, arg1)
-    cmd.set("stick_h_scale",1.0, arg1) 
-    
-    cmd.set('sphere_scale',0.20, arg1)
-    cmd.set('sphere_scale',0.15, f'elem H and {arg1}')
-    
-    cmd.set("shininess", 100)
-    cmd.set("ambient", 0.6)
+def houkmol():
+    for entry in get_visible_entries():
+        ball_stick_preset(entry)
+        default_environment(entry)
+        
+        cmd.color("gray70", f"elem C and {entry}")
+        cmd.color("red", f"elem O and {entry}")
+        cmd.color("tv_blue", f"elem N and {entry}")
+        
+        cmd.set("stick_color",'black', entry)
+        cmd.set("stick_radius",0.1, entry)
+        cmd.set("stick_h_scale",1.0, entry) 
+        
+        cmd.set('sphere_scale',0.20, entry)
+        cmd.set('sphere_scale',0.15, f'elem H and {entry}')
+        
+        cmd.set("shininess", 100)
+        cmd.set("ambient", 0.6)
 cmd.extend("houkmol", houkmol)
 
 def fatball(arg1='all'):
