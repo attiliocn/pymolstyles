@@ -1,5 +1,9 @@
 from pymol import cmd
 
+def get_visible_entries():
+    visible_entries = cmd.get_object_list(selection='visible')
+    return visible_entries
+
 def save_img(filename='default', ray_mode=1):
     '''
     Export the current workspace as PNG using Ray-Tracing. If filename is not present
