@@ -36,12 +36,10 @@ def plot_cube(isovalue=0.004):
             cmd.group(orbitalName, orbital)
 cmd.extend("plot_cube", plot_cube)
 
-def plot_nci(arg1, isovalue=0.3):
-	# nci.py, a tiny script to display plots from Nciplot in PyMOL
-    densf = arg1+"-dens"
-    gradf = arg1+"-grad"
-    cmd.isosurface("grad",gradf, isovalue)
-    cmd.ramp_new("ramp", densf, [-5,5], 'rainbow')
+def plot_nci(densf, gradf, isovalue=0.3, scale=5):
+	# nci.py, a tiny script to display plots from nciplot in PyMOL
+    cmd.isosurface("grad", gradf, isovalue)
+    cmd.ramp_new("ramp", densf, [-float(scale),float(scale)], 'rainbow')
     cmd.set("surface_color", "ramp", "grad")
     cmd.set('transparency', 0, 'grad')
     cmd.set('two_sided_lighting',value=1)

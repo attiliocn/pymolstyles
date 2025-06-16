@@ -4,7 +4,7 @@ def get_visible_entries():
     visible_entries = cmd.get_object_list(selection='visible')
     return visible_entries
 
-def save_img(filename='default', ray_mode=1):
+def save_img(filename='default', surface=False):
     '''
     Export the current workspace as PNG using Ray-Tracing. If filename is not present
     the image is named default.png, except if only one element is visible in the workspace.
@@ -18,9 +18,12 @@ def save_img(filename='default', ray_mode=1):
     canvas_width = screen_size[0]
     canvas_height = screen_size[1]
 
-    cmd.set("ray_trace_gain", 8) # Increase ray_trace_gain for improved look on the final image
-    cmd.png(filename, canvas_width*3, canvas_height*3, dpi=300, ray=ray_mode)
-    cmd.set("ray_trace_gain", 0.12) # Reset ray_trace_gain back to default
+    if not surface:
+        cmd.set("ray_trace_gain", 8) # increase the outline tickness
+        cmd.png(filename, canvas_width*3, canvas_height*3, dpi=300, ray=1)
+        cmd.set("ray_trace_gain", 0.12) # set ray_trace_gain back to default
+    else:
+        cmd.png(filename, canvas_width*3, canvas_height*3, dpi=300, ray=0)
 cmd.extend("save_img",save_img)
 
 def group_visible(groupname='test', include_measurements=False):
